@@ -4,10 +4,10 @@ import numpy as np
 from numpy.testing import assert_allclose
 import inspect
 
-import keras
-from keras.layers import Input
-from keras.models import Model
-from keras import backend as K
+from tensorflow import keras
+from tensorflow.keras.layers import Input
+from tensorflow.keras.models import Model
+from tensorflow.keras import backend as K
 
 
 def get_test_data(num_train=1000, num_test=500, input_shape=(10,),
@@ -182,7 +182,7 @@ def unpack_singleton(x):
 
 if keras.__name__ == 'keras':
     is_tf_keras = False
-elif keras.__name__ == 'tensorflow.keras':
+elif keras.__name__ == 'tensorflow.keras' or 'tensorflow.python.keras.api._v1.keras':
     is_tf_keras = True
 else:
     raise KeyError('Cannot detect if using keras or tf.keras.')
